@@ -26,12 +26,12 @@
       <file leaf-file-name="InterpolationViewer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/InterpolationViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34591195" vertical-offset="0" max-vertical-offset="555">
-              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.44025156" vertical-offset="0" max-vertical-offset="600">
+              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#622#760#0" expanded="true" />
-                <element signature="e#749#750#0" expanded="true" />
+                <element signature="e#695#833#0" expanded="true" />
+                <element signature="e#822#823#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -50,12 +50,12 @@
       <file leaf-file-name="DrawingPanel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DrawingPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="690">
-              <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="720">
+              <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#837#838#0" expanded="true" />
-                <element signature="e#862#863#0" expanded="true" />
+                <element signature="e#887#888#0" expanded="true" />
+                <element signature="e#912#913#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,9 +72,9 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/Canvas.java" />
-        <option value="$PROJECT_DIR$/src/InterpolationViewer.java" />
         <option value="$PROJECT_DIR$/src/Point.java" />
         <option value="$PROJECT_DIR$/src/DrawingPanel.java" />
+        <option value="$PROJECT_DIR$/src/InterpolationViewer.java" />
       </list>
     </option>
   </component>
@@ -395,24 +395,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DrawingPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="690">
-          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="720">
+          <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#837#838#0" expanded="true" />
-            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#887#888#0" expanded="true" />
+            <element signature="e#912#913#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/InterpolationViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34591195" vertical-offset="0" max-vertical-offset="555">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.44025156" vertical-offset="0" max-vertical-offset="600">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#622#760#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
+            <element signature="e#695#833#0" expanded="true" />
+            <element signature="e#822#823#0" expanded="true" />
           </folding>
         </state>
       </provider>

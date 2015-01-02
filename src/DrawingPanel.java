@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -16,6 +16,8 @@ public class DrawingPanel extends JPanel implements ActionListener {
 
         this.width = width;
         this.height = height;
+
+        setPreferredSize(new Dimension(width, height));
 
         this.points = new ArrayList<Point>();
         this.points.add(new Point(25, 10));
