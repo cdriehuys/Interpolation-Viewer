@@ -1,4 +1,5 @@
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class InterpolationViewer extends JFrame {
 
@@ -6,6 +7,9 @@ public class InterpolationViewer extends JFrame {
     public static final int WIN_HEIGHT = 500;
 
     public InterpolationViewer() {
+
+        DrawingPanel panel = new DrawingPanel(WIN_WIDTH, WIN_HEIGHT);
+        add(panel);
 
         setTitle("Interpolation Viewer");
         setSize(WIN_WIDTH, WIN_HEIGHT);
