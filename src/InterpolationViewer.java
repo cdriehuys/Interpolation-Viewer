@@ -12,13 +12,11 @@ public class InterpolationViewer extends JFrame {
         add(panel);
 
         pack();
-        
+
         setTitle("Interpolation Viewer");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-
-        System.out.format("JFrame dimensions are %d x %d%n", getWidth(), getHeight());
     }
 
     public static void main(String[] args) {

@@ -8,7 +8,7 @@ public class DrawingPanel extends JPanel implements ActionListener {
 
     private int width, height;
 
-    private ArrayList<Point> points;
+    private ArrayList<Vector2> points;
 
     private Timer repaintTimer;
 
@@ -19,9 +19,9 @@ public class DrawingPanel extends JPanel implements ActionListener {
 
         setPreferredSize(new Dimension(width, height));
 
-        this.points = new ArrayList<Point>();
-        this.points.add(new Point(25, 10));
-        this.points.add(new Point(30, 25));
+        this.points = new ArrayList<Vector2>();
+        this.points.add(new Vector2(25, 10));
+        this.points.add(new Vector2(30, 25));
 
         this.repaintTimer = new Timer(20, this);
     }
@@ -30,7 +30,7 @@ public class DrawingPanel extends JPanel implements ActionListener {
     public void paint(Graphics g) {
         super.paint(g);
 
-        for (Point p : this.points) {
+        for (Vector2 p : this.points) {
             p.draw(g);
         }
     }
