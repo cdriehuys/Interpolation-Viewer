@@ -7,6 +7,7 @@ public class InterpolationViewer extends JFrame {
 
     public InterpolationViewer() {
 
+        setTitle("Interpolation Viewer");
         setSize(WIN_WIDTH, WIN_HEIGHT);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
