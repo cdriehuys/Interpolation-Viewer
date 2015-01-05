@@ -3,8 +3,8 @@ import javax.swing.SwingUtilities;
 
 public class InterpolationViewer extends JFrame {
 
-    public static final int WIN_WIDTH = 500;
-    public static final int WIN_HEIGHT = 500;
+    public static final int WIN_WIDTH = 700;
+    public static final int WIN_HEIGHT = 700;
 
     public InterpolationViewer() {
 
@@ -21,12 +21,17 @@ public class InterpolationViewer extends JFrame {
 
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(new Runnable() {
+        try {
+            SwingUtilities.invokeLater(new Runnable() {
 
-            @Override
-            public void run() {
-                new InterpolationViewer();
-            }
-        });
+                @Override
+                public void run() {
+                    new InterpolationViewer();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
     }
 }

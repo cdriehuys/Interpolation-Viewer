@@ -1,39 +1,44 @@
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class DrawingPanel extends JPanel implements ChangeListener {
+public class DrawingPanel extends JPanel implements ActionListener {
 
-    private static int T_MIN = 0;
+    private static int MARGIN = 50;
     private static int T_MAX = 1000;
-    private static int T_INIT = 0;
+
+    private static float T_STEP = .005f;
 
     private static Random random = new Random();
 
-    private ArrayList<Vector2> curvePoints;
+    private ArrayList<ArrayList<Vector2>> curvePoints;
+    private ArrayList<Vector2> targets;
 
     private float t;
 
-    private JLabel tLabel;
+    private int curveIndex;
 
-    private JSlider tSlider;
+    private Timer animationTimer;
 
     private Vector2 p0, p1, p2, q0, q1;
 
     public DrawingPanel(int width, int height) {
 
         setPreferredSize(new Dimension(width, height));
+        setSize(getPreferredSize());
 
-        curvePoints = new ArrayList<Vector2>();
+        targets = new ArrayList<Vector2>();
+        curveIndex = 0;
+        curvePoints = new ArrayList<ArrayList<Vector2>>();
+
         genPoints();
 
         JPanel controlPanel = new JPanel();
 
+        /*
         JButton newPointsBtn = new JButton("New Points");
         newPointsBtn.addActionListener(new ActionListener() {
             @Override
@@ -49,8 +54,12 @@ public class DrawingPanel extends JPanel implements ChangeListener {
 
         tLabel = new JLabel(String.format("t = %.2f", (float)tSlider.getValue() / T_MAX));
         controlPanel.add(tLabel);
+        */
 
         add(controlPanel);
+
+        animationTimer = new Timer(20, this);
+        animationTimer.start();
     }
 
     @Override
@@ -62,27 +71,56 @@ public class DrawingPanel extends JPanel implements ChangeListener {
 
         g2d.setColor(Color.ORANGE);
 
-        for (int i = 0; i < tSlider.getValue() - 2; i++) {
-            drawLine(g2d, curvePoints.get(i), curvePoints.get(i + 1), 4);
+        for (int i = 0; i <= curveIndex; i++) {
+            for (int j = 0; j < ((i == curveIndex) ? t * T_MAX - 2 : T_MAX - 1); j++) {
+                drawLine(g2d, curvePoints.get(i).get(j), curvePoints.get(i).get(j + 1), 4);
+            }
         }
 
-        g2d.setColor(Color.BLACK);
+        g2d.setColor(Color.GRAY);
 
         drawLine(g2d, p0, p1, 2);
         drawLine(g2d, p1, p2, 2);
 
         drawLine(g2d, q0, q1);
 
-        p0.draw(g);
-        p1.draw(g);
-        p2.draw(g);
 
-        q0.draw(g);
-        q1.draw(g);
+        g2d.setColor(Color.RED);
 
-        Vector2.lerp(q0, q1, t).draw(g);
+        for (Vector2 p : targets)
+            p.draw(g2d);
+
+        g2d.setColor(Color.BLACK);
+
+        p0.draw(g2d);
+        p1.draw(g2d);
+        p2.draw(g2d);
+
+        q0.draw(g2d);
+        q1.draw(g2d);
+
+        Vector2.lerp(q0, q1, t).draw(g2d);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        t += T_STEP;
+
+        if (t > 1) {
+            targets.remove(0);
+            curveIndex++;
+            genPoints();
+            t = 0;
+        }
+
+        q0 = Vector2.lerp(p0, p1, t);
+        q1 = Vector2.lerp(p1, p2, t);
+
+        repaint();
+    }
+
+    /*
     @Override
     public void stateChanged(ChangeEvent e) {
 
@@ -93,22 +131,29 @@ public class DrawingPanel extends JPanel implements ChangeListener {
         q1 = Vector2.lerp(p1, p2, t);
         repaint();
     }
+    */
 
     public void genPoints() {
 
-        p0 = new Vector2(random.nextInt(300) + 100, random.nextInt(300) + 100);
-        p1 = new Vector2(random.nextInt(300) + 100, random.nextInt(300) + 100);
-        p2 = new Vector2(random.nextInt(300) + 100, random.nextInt(300) + 100);
-        q0 = Vector2.lerp(p0, p1, t);
-        q1 = Vector2.lerp(p1, p2, t);
+        while(targets.size() < 3) {
+            targets.add(new Vector2(random.nextInt(getWidth() - (2 * MARGIN)) + MARGIN,
+                                    random.nextInt(getHeight() - (2 * MARGIN)) + MARGIN,
+                                    3));
+        }
 
-        curvePoints.clear();
+        p0 = Vector2.lerp(targets.get(0), targets.get(1), .5f);
+        p1 = targets.get(1);
+        p2 = Vector2.lerp(targets.get(1), targets.get(2), .5f);
+
+        while (curvePoints.size() < curveIndex + 1) {
+            curvePoints.add(new ArrayList<Vector2>());
+        }
 
         for (int i = 0; i <= T_MAX; i++) {
             float tTemp = (float)i / T_MAX;
             Vector2 q0Temp = Vector2.lerp(p0, p1, (float)i / T_MAX);
             Vector2 q1Temp = Vector2.lerp(p1, p2, (float)i / T_MAX);
-            curvePoints.add(Vector2.lerp(q0Temp, q1Temp, tTemp));
+            curvePoints.get(curveIndex).add(Vector2.lerp(q0Temp, q1Temp, tTemp));
         }
 
         repaint();
